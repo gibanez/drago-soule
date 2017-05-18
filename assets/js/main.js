@@ -2,6 +2,7 @@ var App = angular.module('DragoApp', ['ngMaterial', 'ngMessages', 'material.svgA
 
 
 App.service('BaseService', BaseService);
+App.service('ClientService', ClientService);
 App.controller('MainCtrl', MainCtrl);
 App.controller('ClientCtrl', ClientCtrl);
 

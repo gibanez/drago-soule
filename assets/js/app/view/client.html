@@ -1,1 +1,68 @@
-MAIN
+<md-content>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <md-truncate>Clientes</md-truncate>
+
+            <span flex></span>
+            <md-button class="md-fab md-mini" aria-label="Favorite" ng-click="addClient($event)">
+                <md-icon md-svg-icon="img/icons/ic_insert_drive_file_24px.svg"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+
+    <md-list>
+    <md-list-item ng-repeat="client in clients" ng-click="goToPerson(person.name, $event)" class="noright">
+        <p>{{ client.firstName }} {{ client.lastName }}</p>
+        <md-checkbox class="md-secondary" ng-model="person.selected"></md-checkbox>
+        <md-icon md-svg-icon="communication:email"  ng-click="edit(client, $event)" aria-label="Send Email" class="md-secondary md-hue-3" ></md-icon>
+        <md-icon class="md-secondary" ng-click="doSecondaryAction($event)" aria-label="Chat" md-svg-icon="img/icons/ic_close_24px.svg"></md-icon>
+        <md-icon md-svg-icon="apps"  ng-click="edit(client, $event)" aria-label="Send Email" class="md-secondary md-hue-3" ></md-icon>
+    </md-list-item>
+    </md-list>
+
+
+</md-content>
+
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="myDialog">
+        <md-dialog layout-padding>
+            <h2>Crear Cliente</h2>
+            <md-content class="md-no-momentum">
+                <md-input-container class="md-icon-float md-block">
+                    <!-- Use floating label instead of placeholder -->
+                    <label>Nombre</label>
+                    <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
+                    <input ng-model="newClient.firstName" type="text">
+                </md-input-container>
+
+                <md-input-container class="md-icon-float md-block">
+                    <!-- Use floating label instead of placeholder -->
+                    <label>Apellido</label>
+                    <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
+                    <input ng-model="newClient.lastName" type="text">
+                </md-input-container>
+
+                <md-input-container class="md-icon-float md-block">
+                    <!-- Use floating label instead of placeholder -->
+                    <label>Domicilio</label>
+                    <md-icon md-svg-src="img/icons/ic_place_24px.svg" class="name"></md-icon>
+                    <input ng-model="newClient.address" type="text">
+                </md-input-container>
+
+                <md-input-container class="md-icon-float md-block">
+                    <!-- Use floating label instead of placeholder -->
+                    <label>Telefono</label>
+                    <md-icon md-svg-src="img/icons/ic_phone_24px.svg" class="name"></md-icon>
+                    <input ng-model="newClient.phone" type="text">
+                </md-input-container>
+            </md-content>
+
+            <md-dialog-actions>
+                <md-button class="md-raised md-primary" ng-click="save()">Guardar</md-button>
+                <md-button ng-click="hide()" class="md-primary">Cancelar</md-button>
+                
+            </md-dialog-actions>
+        </md-dialog>
+    </div>
+</div>
